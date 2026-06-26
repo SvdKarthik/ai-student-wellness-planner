@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+
+{% block title %}Home — AI Student Wellness Planner{% endblock %}
+
+{% block meta_description %}Plan study tasks, track workouts, and get AI-powered daily wellness suggestions.{% endblock %}
+
+{% block content %}
+<section aria-labelledby="hero-heading">
+    <header>
+        <h1 id="hero-heading">Your AI-Powered Wellness Companion</h1>
+        <p>
+            Balance academics and fitness. Plan daily study tasks, maintain home
+            workout routines, and let AI help you prioritize what matters most.
+        </p>
+    </header>
+
+    <p>
+        <a href="{{ url_for('main.dashboard') }}">Go to Dashboard</a>
+        |
+        <a href="{{ url_for('main.add_task') }}">Add a Task</a>
+    </p>
+</section>
+
+<section aria-labelledby="features-heading">
+    <h2 id="features-heading">What You Can Do</h2>
+
+    <article>
+        <h3>Plan Study Tasks</h3>
+        <p>
+            Add assignments, exams, and daily study goals. Keep everything
+            organized in one place.
+        </p>
+    </article>
+
+    <article>
+        <h3>Stay Active at Home</h3>
+        <p>
+            Build a consistent home workout routine alongside your study
+            schedule for better focus and energy.
+        </p>
+    </article>
+
+    <article>
+        <h3>Get AI Suggestions</h3>
+        <p>
+            Receive smart prioritization and daily plan recommendations
+            powered by Google Gemini.
+        </p>
+    </article>
+
+    <article>
+        <h3>Track Your Progress</h3>
+        <p>
+            See how many tasks you complete and how consistently you
+            stick to your wellness goals over time.
+        </p>
+    </article>
+</section>
+
+<section aria-labelledby="cta-heading">
+    <h2 id="cta-heading">Ready to Start?</h2>
+    <p>Take control of your day — one task and one workout at a time.</p>
+    <p>
+        <a href="{{ url_for('main.ai_suggestions') }}">View AI Suggestions</a>
+        |
+        <a href="{{ url_for('main.progress') }}">See Your Progress</a>
+    </p>
+</section>
+{% endblock %}

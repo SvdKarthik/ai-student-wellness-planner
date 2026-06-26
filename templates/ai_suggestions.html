@@ -1,0 +1,113 @@
+{% extends "base.html" %}
+
+{% block title %}AI Suggestions — AI Student Wellness Planner{% endblock %}
+
+{% block meta_description %}AI-powered task prioritization and daily wellness plan suggestions.{% endblock %}
+
+{% block content %}
+<section aria-labelledby="ai-heading">
+    <header>
+        <h1 id="ai-heading">AI Suggestions</h1>
+        <p>
+            Smart recommendations powered by Google Gemini to help you
+            prioritize tasks and balance study with wellness.
+        </p>
+    </header>
+</section>
+
+<section aria-labelledby="daily-plan-heading">
+    <h2 id="daily-plan-heading">Suggested Daily Plan</h2>
+
+    <article>
+        <header>
+            <h3>Morning — Focus Block</h3>
+            <time datetime="2026-06-25T09:00">9:00 AM – 11:00 AM</time>
+        </header>
+        <p>
+            <strong>Recommended:</strong> Complete Math Assignment first.
+            It has the highest priority and is due soonest.
+        </p>
+        <ul>
+            <li>Review lecture notes (20 minutes)</li>
+            <li>Work through problem set (90 minutes)</li>
+            <li>Short break — stretch and hydrate (10 minutes)</li>
+        </ul>
+    </article>
+
+    <article>
+        <header>
+            <h3>Midday — Active Break</h3>
+            <time datetime="2026-06-25T12:00">12:00 PM – 12:30 PM</time>
+        </header>
+        <p>
+            <strong>Recommended:</strong> Complete your home workout routine
+            before afternoon study to boost energy and focus.
+        </p>
+        <ul>
+            <li>Jumping Jacks — 2 minutes</li>
+            <li>Push-ups — 3 sets</li>
+            <li>Squats — 3 sets</li>
+            <li>Plank and stretching — 6 minutes</li>
+        </ul>
+    </article>
+
+    <article>
+        <header>
+            <h3>Afternoon — Study Block</h3>
+            <time datetime="2026-06-25T14:00">2:00 PM – 4:00 PM</time>
+        </header>
+        <p>
+            <strong>Recommended:</strong> Read Biology Chapter 5, then review
+            History notes for your upcoming quiz.
+        </p>
+        <ul>
+            <li>Biology reading and notes (60 minutes)</li>
+            <li>History quiz review (60 minutes)</li>
+        </ul>
+    </article>
+</section>
+
+<section aria-labelledby="priority-heading">
+    <h2 id="priority-heading">Task Priority Order</h2>
+
+    <ol>
+        <li>
+            <article>
+                <h3>Complete Math Assignment</h3>
+                <p>Reason: High priority, due tomorrow, requires most focus.</p>
+            </article>
+        </li>
+        <li>
+            <article>
+                <h3>Review Notes for History Quiz</h3>
+                <p>Reason: Quiz is this week — quick review sessions work well after lunch.</p>
+            </article>
+        </li>
+        <li>
+            <article>
+                <h3>Read Chapter 5 — Biology</h3>
+                <p>Reason: Medium priority — schedule when you have uninterrupted reading time.</p>
+            </article>
+        </li>
+    </ol>
+</section>
+
+<section aria-labelledby="wellness-tip-heading">
+    <h2 id="wellness-tip-heading">Wellness Tip</h2>
+
+    <blockquote cite="#">
+        <p>
+            Alternate 50 minutes of focused study with 10-minute movement breaks.
+            Consistency beats cramming — small daily progress adds up.
+        </p>
+    </blockquote>
+</section>
+
+<section aria-labelledby="refresh-heading">
+    <h2 id="refresh-heading">Get New Suggestions</h2>
+    <p>Refresh recommendations based on your latest tasks and progress.</p>
+    <form action="{{ url_for('main.ai_suggestions') }}" method="post">
+        <button type="submit">Generate New Suggestions</button>
+    </form>
+</section>
+{% endblock %}

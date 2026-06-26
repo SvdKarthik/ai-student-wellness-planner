@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard — AI Student Wellness Planner{% endblock %}
+
+{% block meta_description %}Overview of today's study tasks, workouts, and wellness summary.{% endblock %}
+
+{% block content %}
+<section aria-labelledby="dashboard-heading">
+    <header>
+        <h1 id="dashboard-heading">Dashboard</h1>
+        <p>Your daily overview — study tasks, workouts, and wellness at a glance.</p>
+        <time datetime="2026-06-25">Thursday, June 25, 2026</time>
+    </header>
+</section>
+
+<section aria-labelledby="today-tasks-heading">
+    <h2 id="today-tasks-heading">Today's Study Tasks</h2>
+
+    <ul id="task-list">
+
+        <li>
+            <article>
+                <h3>Complete Math Assignment</h3>
+                <p>Subject: Mathematics</p>
+                <p>Priority: High</p>
+                <p>Status: Pending</p>
+            </article>
+        </li>
+        <li>
+            <article>
+                <h3>Read Chapter 5 — Biology</h3>
+                <p>Subject: Biology</p>
+                <p>Priority: Medium</p>
+                <p>Status: Pending</p>
+            </article>
+        </li>
+        <li>
+            <article>
+                <h3>Review Notes for History Quiz</h3>
+                <p>Subject: History</p>
+                <p>Priority: High</p>
+                <p>Status: Completed</p>
+            </article>
+        </li>
+    </ul>
+
+    <p><a href="{{ url_for('main.add_task') }}">Add New Task</a></p>
+</section>
+
+<section aria-labelledby="today-workout-heading">
+    <h2 id="today-workout-heading">Today's Workout</h2>
+
+    <article>
+        <h3>Home Workout Routine</h3>
+        <ul>
+            <li>Jumping Jacks — 2 minutes</li>
+            <li>Push-ups — 3 sets of 10</li>
+            <li>Squats — 3 sets of 15</li>
+            <li>Plank — 1 minute</li>
+            <li>Stretching — 5 minutes</li>
+        </ul>
+        <p>Status: Not started</p>
+    </article>
+</section>
+
+<section aria-labelledby="daily-summary-heading">
+    <h2 id="daily-summary-heading">Daily Summary</h2>
+
+    <dl>
+        <dt>Tasks Completed</dt>
+        <dd>1 of 3</dd>
+
+        <dt>Workout Completed</dt>
+        <dd>No</dd>
+
+        <dt>Focus Recommendation</dt>
+        <dd>Start with Math Assignment — due soon and high priority.</dd>
+    </dl>
+
+    <p><a href="{{ url_for('main.ai_suggestions') }}">Get AI Suggestions</a></p>
+</section>
+{% endblock %}

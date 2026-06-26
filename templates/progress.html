@@ -1,0 +1,157 @@
+{% extends "base.html" %}
+
+{% block title %}Progress — AI Student Wellness Planner{% endblock %}
+
+{% block meta_description %}Track completed study tasks, workout consistency, and weekly wellness progress.{% endblock %}
+
+{% block content %}
+<section aria-labelledby="progress-heading">
+    <header>
+        <h1 id="progress-heading">Your Progress</h1>
+        <p>Track how consistently you complete study tasks and home workouts.</p>
+    </header>
+</section>
+
+<section aria-labelledby="weekly-stats-heading">
+    <h2 id="weekly-stats-heading">This Week at a Glance</h2>
+
+    <dl>
+        <dt>Study Tasks Completed</dt>
+        <dd>12 of 15</dd>
+
+        <dt>Workouts Completed</dt>
+        <dd>4 of 5</dd>
+
+        <dt>Current Streak</dt>
+        <dd>3 days</dd>
+
+        <dt>Best Streak</dt>
+        <dd>7 days</dd>
+    </dl>
+</section>
+
+<section aria-labelledby="task-progress-heading">
+    <h2 id="task-progress-heading">Study Task Progress</h2>
+
+    <table>
+        <caption>Tasks completed by subject this week</caption>
+        <thead>
+            <tr>
+                <th scope="col">Subject</th>
+                <th scope="col">Completed</th>
+                <th scope="col">Total</th>
+                <th scope="col">Completion Rate</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Mathematics</td>
+                <td>3</td>
+                <td>4</td>
+                <td>75%</td>
+            </tr>
+            <tr>
+                <td>Biology</td>
+                <td>2</td>
+                <td>3</td>
+                <td>67%</td>
+            </tr>
+            <tr>
+                <td>History</td>
+                <td>4</td>
+                <td>4</td>
+                <td>100%</td>
+            </tr>
+            <tr>
+                <td>English</td>
+                <td>3</td>
+                <td>4</td>
+                <td>75%</td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+
+<section aria-labelledby="workout-progress-heading">
+    <h2 id="workout-progress-heading">Workout Progress</h2>
+
+    <table>
+        <caption>Home workout completion this week</caption>
+        <thead>
+            <tr>
+                <th scope="col">Day</th>
+                <th scope="col">Workout</th>
+                <th scope="col">Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Monday</td>
+                <td>Full Body Routine</td>
+                <td>Completed</td>
+            </tr>
+            <tr>
+                <td>Tuesday</td>
+                <td>Cardio and Stretching</td>
+                <td>Completed</td>
+            </tr>
+            <tr>
+                <td>Wednesday</td>
+                <td>Strength Training</td>
+                <td>Completed</td>
+            </tr>
+            <tr>
+                <td>Thursday</td>
+                <td>Full Body Routine</td>
+                <td>Pending</td>
+            </tr>
+            <tr>
+                <td>Friday</td>
+                <td>Active Recovery</td>
+                <td>Upcoming</td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+
+<section aria-labelledby="milestones-heading">
+    <h2 id="milestones-heading">Recent Milestones</h2>
+
+    <ul>
+        <li>
+            <article>
+                <h3>Completed 10 tasks this week</h3>
+                <time datetime="2026-06-24">June 24, 2026</time>
+                <p>You hit double-digit task completions — keep the momentum going.</p>
+            </article>
+        </li>
+        <li>
+            <article>
+                <h3>3-day workout streak</h3>
+                <time datetime="2026-06-23">June 23, 2026</time>
+                <p>Three workouts in a row — consistency builds lasting habits.</p>
+            </article>
+        </li>
+        <li>
+            <article>
+                <h3>100% History tasks done</h3>
+                <time datetime="2026-06-22">June 22, 2026</time>
+                <p>All History tasks completed ahead of your quiz.</p>
+            </article>
+        </li>
+    </ul>
+</section>
+
+<section aria-labelledby="next-goals-heading">
+    <h2 id="next-goals-heading">Next Goals</h2>
+
+    <ol>
+        <li>Complete today's Math Assignment</li>
+        <li>Finish Thursday home workout</li>
+        <li>Reach a 5-day workout streak</li>
+        <li>Complete 15 tasks this week</li>
+    </ol>
+
+    <p><a href="{{ url_for('main.dashboard') }}">Back to Dashboard</a></p>
+</section>
+{% endblock %}

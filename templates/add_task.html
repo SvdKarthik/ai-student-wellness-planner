@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+
+{% block title %}Add Task — AI Student Wellness Planner{% endblock %}
+
+{% block meta_description %}Add a new study task with subject, priority, and due date.{% endblock %}
+
+{% block content %}
+<section aria-labelledby="add-task-heading">
+    <header>
+        <h1 id="add-task-heading">Add Study Task</h1>
+        <p>Fill in the details below to add a new task to your planner.</p>
+    </header>
+
+    <form id="task-form">
+        <fieldset>
+            <legend>Task Details</legend>
+
+            <p>
+                <label for="task-title">Task Title</label><br>
+                <input type="text" id="task-title" name="title"
+                       placeholder="e.g. Complete Math Assignment" required>
+            </p>
+
+            <p>
+                <label for="task-subject">Subject</label><br>
+                <select id="task-subject" name="subject" required>
+                    <option value="">Select a subject</option>
+                    <option value="mathematics">Mathematics</option>
+                    <option value="biology">Biology</option>
+                    <option value="history">History</option>
+                    <option value="english">English</option>
+                    <option value="physics">Physics</option>
+                    <option value="chemistry">Chemistry</option>
+                    <option value="other">Other</option>
+                </select>
+            </p>
+
+            <p>
+                <label for="task-priority">Priority</label><br>
+                <select id="task-priority" name="priority" required>
+                    <option value="">Select priority</option>
+                    <option value="high">High</option>
+                    <option value="medium">Medium</option>
+                    <option value="low">Low</option>
+                </select>
+            </p>
+
+            <p>
+                <label for="task-due-date">Due Date</label><br>
+                <input type="date" id="task-due-date" name="due_date" required>
+            </p>
+
+            <p>
+                <label for="task-description">Description</label><br>
+                <textarea id="task-description" name="description" rows="4"
+                          placeholder="Add notes or instructions for this task"></textarea>
+            </p>
+        </fieldset>
+
+        <fieldset>
+            <legend>Workout Reminder</legend>
+
+            <p>
+                <label for="workout-reminder">
+                    <input type="checkbox" id="workout-reminder" name="workout_reminder" value="yes">
+                    Remind me to do my home workout after completing this task
+                </label>
+            </p>
+        </fieldset>
+
+        <p>
+            <button type="submit">Add Task</button>
+            <a href="{{ url_for('main.dashboard') }}">Cancel</a>
+        </p>
+    </form>
+</section>
+{% endblock %}

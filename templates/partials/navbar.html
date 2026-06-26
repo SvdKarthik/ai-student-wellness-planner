@@ -1,0 +1,37 @@
+<header>
+    <p>AI Student Wellness Planner</p>
+    <nav aria-label="Main navigation">
+        <ul>
+            <li>
+                <a href="{{ url_for('main.landing') }}"
+                   {% if active_page == 'landing' %}aria-current="page"{% endif %}>
+                    Home
+                </a>
+            </li>
+            <li>
+                <a href="{{ url_for('main.dashboard') }}"
+                   {% if active_page == 'dashboard' %}aria-current="page"{% endif %}>
+                    Dashboard
+                </a>
+            </li>
+            <li>
+                <a href="{{ url_for('main.add_task') }}"
+                   {% if active_page == 'add_task' %}aria-current="page"{% endif %}>
+                    Add Task
+                </a>
+            </li>
+            <li>
+                <a href="{{ url_for('main.ai_suggestions') }}"
+                   {% if active_page == 'ai_suggestions' %}aria-current="page"{% endif %}>
+                    AI Suggestions
+                </a>
+            </li>
+            <li>
+                <a href="{{ url_for('main.progress') }}"
+                   {% if active_page == 'progress' %}aria-current="page"{% endif %}>
+                    Progress
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>

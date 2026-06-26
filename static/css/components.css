@@ -1,0 +1,763 @@
+/*
+ * components.css — Buttons, cards, forms, tables, task & progress cards
+ */
+
+/* ── Buttons ───────────────────────────────────────────────────── */
+button,
+input[type="submit"],
+main section > p > a,
+main form > p > a,
+main form > p > button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.7rem 1.5rem;
+    font-family: inherit;
+    font-size: 0.9rem;
+    font-weight: 600;
+    line-height: 1.4;
+    text-decoration: none;
+    border: none;
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    transition: transform var(--transition-base),
+                box-shadow var(--transition-base),
+                background var(--transition-base),
+                border-color var(--transition-base),
+                color var(--transition-base);
+}
+
+/* Primary button */
+button,
+input[type="submit"],
+main section > p > a:first-of-type,
+main form > p > button[type="submit"] {
+    background: var(--gradient-accent);
+    color: #ffffff;
+    box-shadow: 0 4px 20px rgba(99, 102, 241, 0.35);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+button:hover,
+input[type="submit"]:hover,
+main section > p > a:first-of-type:hover,
+main form > p > button[type="submit"]:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 28px rgba(99, 102, 241, 0.5);
+}
+
+button:active,
+input[type="submit"]:active,
+main section > p > a:active,
+main form > p > button:active {
+    transform: translateY(-1px);
+}
+
+/* Secondary / cancel link button */
+main section > p > a + a,
+main form > p > a {
+    background: var(--glass-bg);
+    color: var(--color-text-secondary);
+    border: 1px solid var(--glass-border);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    box-shadow: none;
+}
+
+main section > p > a + a:hover,
+main form > p > a:hover {
+    color: var(--color-text-primary);
+    background: var(--glass-bg-hover);
+    border-color: var(--glass-border-hover);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+}
+
+/* Form action row */
+main form > p:last-child {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 1.5rem;
+    margin-bottom: 0;
+}
+
+/* ── Task cards (dashboard task list) ────────────────────────────── */
+section[aria-labelledby="today-tasks-heading"] > ul {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+section[aria-labelledby="today-tasks-heading"] > ul > li {
+    margin: 0;
+}
+
+section[aria-labelledby="today-tasks-heading"] article {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-md);
+    padding: 1.35rem 1.5rem;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+    transition: transform var(--transition-base),
+                border-color var(--transition-base),
+                box-shadow var(--transition-base),
+                background var(--transition-base);
+}
+
+section[aria-labelledby="today-tasks-heading"] article::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--gradient-accent);
+    opacity: 0;
+    transition: opacity var(--transition-base);
+}
+
+section[aria-labelledby="today-tasks-heading"] article:hover {
+    transform: translateY(-5px);
+    border-color: rgba(99, 102, 241, 0.35);
+    background: rgba(99, 102, 241, 0.06);
+    box-shadow: 0 16px 40px rgba(99, 102, 241, 0.18);
+}
+
+section[aria-labelledby="today-tasks-heading"] article:hover::before {
+    opacity: 1;
+}
+
+section[aria-labelledby="today-tasks-heading"] article h3 {
+    font-size: 1rem;
+    margin-bottom: 0.85rem;
+    padding-right: 0.5rem;
+}
+
+/* Task meta lines (Subject, Priority, Status) */
+section[aria-labelledby="today-tasks-heading"] article p {
+    display: inline-flex;
+    align-items: center;
+    font-size: 0.8rem;
+    font-weight: 500;
+    padding: 0.25rem 0.65rem;
+    margin: 0 0.4rem 0.4rem 0;
+    border-radius: var(--radius-sm);
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--glass-border);
+    color: var(--color-text-muted);
+}
+
+section[aria-labelledby="today-tasks-heading"] article p:nth-of-type(2) {
+    color: var(--color-info);
+    border-color: rgba(56, 189, 248, 0.25);
+    background: rgba(56, 189, 248, 0.08);
+}
+
+section[aria-labelledby="today-tasks-heading"] article p:nth-of-type(3) {
+    color: var(--color-warning);
+    border-color: rgba(245, 158, 11, 0.25);
+    background: rgba(245, 158, 11, 0.08);
+}
+
+section[aria-labelledby="today-tasks-heading"] article p:nth-of-type(4),
+section[aria-labelledby="today-tasks-heading"] article p:last-of-type {
+    color: var(--color-text-secondary);
+    border-color: var(--glass-border);
+}
+
+/* Completed task — last card on dashboard sample */
+section[aria-labelledby="today-tasks-heading"] article:has(p:last-of-type) {
+    /* base card styles apply */
+}
+
+section[aria-labelledby="today-tasks-heading"] ul > li:last-child article {
+    border-color: rgba(34, 197, 94, 0.25);
+    background: rgba(34, 197, 94, 0.05);
+}
+
+section[aria-labelledby="today-tasks-heading"] ul > li:last-child article p:last-of-type {
+    color: var(--color-success);
+    border-color: rgba(34, 197, 94, 0.3);
+    background: rgba(34, 197, 94, 0.1);
+}
+
+section[aria-labelledby="today-tasks-heading"] > p {
+    margin-bottom: 0;
+}
+
+/* ── Workout card (dashboard) ──────────────────────────────────── */
+section[aria-labelledby="today-workout-heading"] > article {
+    background: rgba(6, 182, 212, 0.06);
+    border: 1px solid rgba(6, 182, 212, 0.2);
+    border-radius: var(--radius-md);
+    padding: 1.5rem;
+    transition: transform var(--transition-base),
+                box-shadow var(--transition-base),
+                border-color var(--transition-base);
+}
+
+section[aria-labelledby="today-workout-heading"] > article:hover {
+    transform: translateY(-4px);
+    border-color: rgba(6, 182, 212, 0.4);
+    box-shadow: 0 12px 32px rgba(6, 182, 212, 0.15);
+}
+
+section[aria-labelledby="today-workout-heading"] article ul {
+    margin: 1rem 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+section[aria-labelledby="today-workout-heading"] article ul li {
+    padding: 0.5rem 0.85rem;
+    background: rgba(255, 255, 255, 0.04);
+    border-radius: var(--radius-sm);
+    font-size: 0.875rem;
+    color: var(--color-text-secondary);
+    border-left: 3px solid var(--color-accent-tertiary);
+    margin: 0;
+    transition: background var(--transition-fast),
+                padding-left var(--transition-base);
+}
+
+section[aria-labelledby="today-workout-heading"] article ul li:hover {
+    background: rgba(6, 182, 212, 0.1);
+    padding-left: 1.1rem;
+}
+
+/* ── Daily summary (dashboard dl) ────────────────────────────────── */
+section[aria-labelledby="daily-summary-heading"] dl {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+section[aria-labelledby="daily-summary-heading"] dt {
+    font-size: 0.78rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--color-text-muted);
+    padding: 1rem 1.25rem 0.4rem;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--glass-border);
+    border-bottom: none;
+    border-radius: var(--radius-md) var(--radius-md) 0 0;
+    margin: 0;
+}
+
+section[aria-labelledby="daily-summary-heading"] dd {
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--color-text-primary);
+    padding: 0.4rem 1.25rem 1.1rem;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--glass-border);
+    border-top: none;
+    border-radius: 0 0 var(--radius-md) var(--radius-md);
+    margin: 0 0 0.5rem;
+    transition: background var(--transition-base);
+}
+
+section[aria-labelledby="daily-summary-heading"] dt:hover + dd,
+section[aria-labelledby="daily-summary-heading"] dd:hover {
+    background: rgba(99, 102, 241, 0.08);
+}
+
+section[aria-labelledby="daily-summary-heading"] dd:last-of-type {
+    grid-column: 1 / -1;
+    font-size: 0.95rem;
+    font-weight: 400;
+    color: var(--color-text-secondary);
+    border-radius: var(--radius-md);
+    border-top: 1px solid var(--glass-border);
+    padding-top: 1rem;
+    background: rgba(139, 92, 246, 0.06);
+    border-color: rgba(139, 92, 246, 0.2);
+}
+
+section[aria-labelledby="daily-summary-heading"] dt:last-of-type {
+    grid-column: 1 / -1;
+    border-radius: var(--radius-md) var(--radius-md) 0 0;
+    background: rgba(139, 92, 246, 0.06);
+    border-color: rgba(139, 92, 246, 0.2);
+}
+
+/* ── Progress stat cards ─────────────────────────────────────────── */
+section[aria-labelledby="weekly-stats-heading"] dl {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.25rem;
+}
+
+section[aria-labelledby="weekly-stats-heading"] dt {
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: var(--color-accent-tertiary);
+    margin-bottom: 0.35rem;
+}
+
+section[aria-labelledby="weekly-stats-heading"] dd {
+    font-size: clamp(1.75rem, 4vw, 2.25rem);
+    font-weight: 700;
+    color: var(--color-text-primary);
+    line-height: 1.1;
+    margin: 0;
+    padding: 1.25rem 1.5rem;
+    background: var(--glass-bg);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--glass-shadow);
+    transition: transform var(--transition-base),
+                border-color var(--transition-base),
+                box-shadow var(--transition-base),
+                background var(--transition-base);
+}
+
+section[aria-labelledby="weekly-stats-heading"] dd:hover {
+    transform: translateY(-6px) scale(1.02);
+    border-color: rgba(6, 182, 212, 0.35);
+    background: rgba(6, 182, 212, 0.08);
+    box-shadow: 0 20px 48px rgba(6, 182, 212, 0.18);
+}
+
+/* Staggered accent colors for progress stat cards */
+section[aria-labelledby="weekly-stats-heading"] dd:nth-of-type(1):hover {
+    border-color: rgba(99, 102, 241, 0.35);
+    background: rgba(99, 102, 241, 0.08);
+    box-shadow: 0 20px 48px rgba(99, 102, 241, 0.18);
+}
+
+section[aria-labelledby="weekly-stats-heading"] dd:nth-of-type(2):hover {
+    border-color: rgba(6, 182, 212, 0.35);
+    background: rgba(6, 182, 212, 0.08);
+    box-shadow: 0 20px 48px rgba(6, 182, 212, 0.18);
+}
+
+section[aria-labelledby="weekly-stats-heading"] dd:nth-of-type(3):hover {
+    border-color: rgba(34, 197, 94, 0.35);
+    background: rgba(34, 197, 94, 0.08);
+    box-shadow: 0 20px 48px rgba(34, 197, 94, 0.18);
+}
+
+section[aria-labelledby="weekly-stats-heading"] dd:nth-of-type(4):hover {
+    border-color: rgba(245, 158, 11, 0.35);
+    background: rgba(245, 158, 11, 0.08);
+    box-shadow: 0 20px 48px rgba(245, 158, 11, 0.18);
+}
+
+/* ── Milestone / progress cards ──────────────────────────────────── */
+section[aria-labelledby="milestones-heading"] > ul {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.25rem;
+}
+
+section[aria-labelledby="milestones-heading"] article {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-md);
+    padding: 1.5rem;
+    height: 100%;
+    transition: transform var(--transition-base),
+                border-color var(--transition-base),
+                box-shadow var(--transition-base);
+}
+
+section[aria-labelledby="milestones-heading"] article:hover {
+    transform: translateY(-5px);
+    border-color: rgba(139, 92, 246, 0.35);
+    box-shadow: 0 16px 40px rgba(139, 92, 246, 0.15);
+}
+
+section[aria-labelledby="milestones-heading"] article time {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-size: 0.78rem;
+}
+
+/* ── AI suggestion cards ───────────────────────────────────────────── */
+section[aria-labelledby="daily-plan-heading"] > article,
+section[aria-labelledby="priority-heading"] ol > li > article {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-md);
+    padding: 1.5rem;
+    margin-bottom: 1.25rem;
+    transition: transform var(--transition-base),
+                border-color var(--transition-base),
+                box-shadow var(--transition-base);
+}
+
+section[aria-labelledby="daily-plan-heading"] > article:hover,
+section[aria-labelledby="priority-heading"] ol > li > article:hover {
+    transform: translateY(-4px);
+    border-color: rgba(99, 102, 241, 0.3);
+    box-shadow: 0 12px 36px rgba(99, 102, 241, 0.12);
+}
+
+section[aria-labelledby="daily-plan-heading"] article header {
+    margin-bottom: 0.75rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--glass-border);
+}
+
+section[aria-labelledby="daily-plan-heading"] article ul {
+    margin-top: 0.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+}
+
+section[aria-labelledby="daily-plan-heading"] article ul li {
+    padding: 0.45rem 0.85rem;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: var(--radius-sm);
+    font-size: 0.875rem;
+    color: var(--color-text-secondary);
+    margin: 0;
+}
+
+section[aria-labelledby="priority-heading"] ol {
+    counter-reset: priority;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+section[aria-labelledby="priority-heading"] ol > li {
+    counter-increment: priority;
+    margin: 0;
+}
+
+section[aria-labelledby="priority-heading"] ol > li > article {
+    position: relative;
+    padding-left: 3.5rem;
+    margin-bottom: 0;
+}
+
+section[aria-labelledby="priority-heading"] ol > li > article::before {
+    content: counter(priority);
+    position: absolute;
+    left: 1.25rem;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 2rem;
+    height: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--gradient-accent);
+    border-radius: 50%;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #ffffff;
+    box-shadow: 0 4px 12px rgba(99, 102, 241, 0.4);
+}
+
+/* ── Blockquote (wellness tip) ───────────────────────────────────── */
+section[aria-labelledby="wellness-tip-heading"] blockquote {
+    margin: 0;
+    padding: 1.5rem 1.75rem;
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(6, 182, 212, 0.08) 100%);
+    border-left: 4px solid var(--color-accent-primary);
+    border-radius: 0 var(--radius-md) var(--radius-md) 0;
+    transition: border-color var(--transition-base),
+                box-shadow var(--transition-base);
+}
+
+section[aria-labelledby="wellness-tip-heading"] blockquote:hover {
+    border-left-color: var(--color-accent-tertiary);
+    box-shadow: 0 8px 24px rgba(99, 102, 241, 0.12);
+}
+
+section[aria-labelledby="wellness-tip-heading"] blockquote p {
+    font-size: 1.05rem;
+    font-style: italic;
+    color: var(--color-text-primary);
+    margin: 0;
+}
+
+/* ── Forms ───────────────────────────────────────────────────────── */
+main form {
+    margin-top: 1rem;
+}
+
+main fieldset {
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-md);
+    padding: 1.5rem;
+    margin-bottom: 1.25rem;
+    background: rgba(255, 255, 255, 0.02);
+    transition: border-color var(--transition-base);
+}
+
+main fieldset:hover {
+    border-color: var(--glass-border-hover);
+}
+
+main legend {
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-accent-secondary);
+    padding: 0 0.5rem;
+}
+
+main label {
+    display: block;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--color-text-secondary);
+    margin-bottom: 0.4rem;
+}
+
+main input[type="text"],
+main input[type="date"],
+main select,
+main textarea {
+    width: 100%;
+    max-width: 100%;
+    padding: 0.75rem 1rem;
+    font-family: inherit;
+    font-size: 0.925rem;
+    color: var(--color-text-primary);
+    background: rgba(0, 0, 0, 0.25);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-sm);
+    outline: none;
+    transition: border-color var(--transition-base),
+                box-shadow var(--transition-base),
+                background var(--transition-base);
+}
+
+main input[type="text"]:focus,
+main input[type="date"]:focus,
+main select:focus,
+main textarea:focus {
+    border-color: rgba(99, 102, 241, 0.5);
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15);
+    background: rgba(0, 0, 0, 0.35);
+}
+
+main input[type="text"]::placeholder,
+main textarea::placeholder {
+    color: var(--color-text-muted);
+}
+
+main select {
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%2394a3b8' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    padding-right: 2.5rem;
+}
+
+main select option {
+    background: var(--color-bg-surface);
+    color: var(--color-text-primary);
+}
+
+main textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+main input[type="checkbox"] {
+    width: 1.1rem;
+    height: 1.1rem;
+    accent-color: var(--color-accent-primary);
+    cursor: pointer;
+    vertical-align: middle;
+    margin-right: 0.5rem;
+}
+
+main fieldset label[for="workout-reminder"] {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+    cursor: pointer;
+    color: var(--color-text-secondary);
+    transition: color var(--transition-fast);
+}
+
+main fieldset label[for="workout-reminder"]:hover {
+    color: var(--color-text-primary);
+}
+
+main form > p {
+    margin-bottom: 1rem;
+}
+
+/* ── Tables (progress page) ──────────────────────────────────────── */
+main table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin-top: 0.5rem;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    border: 1px solid var(--glass-border);
+}
+
+main table caption {
+    text-align: left;
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+    padding-bottom: 0.75rem;
+    caption-side: top;
+}
+
+main thead {
+    background: rgba(99, 102, 241, 0.12);
+}
+
+main th {
+    padding: 0.85rem 1.25rem;
+    text-align: left;
+    font-size: 0.78rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-text-secondary);
+    border-bottom: 1px solid var(--glass-border);
+}
+
+main td {
+    padding: 0.85rem 1.25rem;
+    font-size: 0.9rem;
+    color: var(--color-text-secondary);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+    transition: background var(--transition-fast),
+                color var(--transition-fast);
+}
+
+main tbody tr {
+    transition: background var(--transition-fast);
+}
+
+main tbody tr:hover {
+    background: rgba(99, 102, 241, 0.06);
+}
+
+main tbody tr:hover td {
+    color: var(--color-text-primary);
+}
+
+main tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* Status column highlights in workout table */
+main td:last-child {
+    font-weight: 600;
+}
+
+main tbody tr td:last-child {
+    color: var(--color-warning);
+}
+
+main tbody tr:first-child td:last-child,
+main tbody tr:nth-child(2) td:last-child,
+main tbody tr:nth-child(3) td:last-child {
+    color: var(--color-success);
+}
+
+/* ── Next goals list (progress) ──────────────────────────────────── */
+section[aria-labelledby="next-goals-heading"] ol {
+    counter-reset: goals;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    margin-bottom: 1.5rem;
+}
+
+section[aria-labelledby="next-goals-heading"] ol > li {
+    counter-increment: goals;
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    padding: 0.85rem 1.15rem;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-sm);
+    color: var(--color-text-secondary);
+    font-size: 0.925rem;
+    margin: 0;
+    transition: background var(--transition-base),
+                border-color var(--transition-base),
+                transform var(--transition-base),
+                padding-left var(--transition-base);
+}
+
+section[aria-labelledby="next-goals-heading"] ol > li::before {
+    content: counter(goals);
+    flex-shrink: 0;
+    width: 1.75rem;
+    height: 1.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(99, 102, 241, 0.2);
+    border-radius: 50%;
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: var(--color-accent-primary);
+}
+
+section[aria-labelledby="next-goals-heading"] ol > li:hover {
+    background: rgba(99, 102, 241, 0.08);
+    border-color: rgba(99, 102, 241, 0.25);
+    transform: translateX(6px);
+    color: var(--color-text-primary);
+}
+
+/* ── Responsive component tweaks ─────────────────────────────────── */
+@media (max-width: 768px) {
+    section[aria-labelledby="today-tasks-heading"] > ul,
+    section[aria-labelledby="milestones-heading"] > ul {
+        grid-template-columns: 1fr;
+    }
+
+    section[aria-labelledby="weekly-stats-heading"] dl,
+    section[aria-labelledby="daily-summary-heading"] dl {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    main table {
+        display: block;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+}
+
+@media (max-width: 480px) {
+    section[aria-labelledby="weekly-stats-heading"] dl,
+    section[aria-labelledby="daily-summary-heading"] dl {
+        grid-template-columns: 1fr;
+    }
+
+    button,
+    main section > p > a,
+    main form > p > a,
+    main form > p > button {
+        width: 100%;
+    }
+
+    main form > p:last-child {
+        flex-direction: column;
+    }
+}
